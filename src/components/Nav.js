@@ -1,9 +1,9 @@
-import { Fragment } from 'react';
-import { Link } from 'react-router-dom';
-import { Disclosure } from '@headlessui/react';
-import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline';
+import { Fragment } from 'react'
+import { NavLink } from 'react-router-dom'
+import { Disclosure } from '@headlessui/react'
+import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
 
-import ProfileDropdown from './ProfileDropdown';
+import ProfileDropdown from './ProfileDropdown'
 
 export default function Nav({ navigation, profile }) {
   return (
@@ -22,27 +22,16 @@ export default function Nav({ navigation, profile }) {
                 </div>
                 <div className="hidden md:block">
                   <div className="ml-10 flex items-baseline space-x-4">
-                    {navigation.map((item, itemIdx) =>
-                      itemIdx === 0 ? (
-                        <Fragment key={item}>
-                          {/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
-                          <Link
-                            to={`/${item.toLowerCase()}`}
-                            className="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
-                          >
-                            {item}
-                          </Link>
-                        </Fragment>
-                      ) : (
-                        <Link
-                          key={item}
-                          to={`/${item.toLowerCase()}`}
-                          className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                        >
-                          {item}
-                        </Link>
-                      )
-                    )}
+                    {navigation.map((item) => (
+                      <NavLink
+                        key={item}
+                        to={`/${item.toLowerCase()}`}
+                        activeClassName="bg-gray-900 text-white"
+                        className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                      >
+                        {item}
+                      </NavLink>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -71,27 +60,16 @@ export default function Nav({ navigation, profile }) {
 
           <Disclosure.Panel className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              {navigation.map((item, itemIdx) =>
-                itemIdx === 0 ? (
-                  <Fragment key={item}>
-                    {/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
-                    <Link
-                      to={`/${item.toLowerCase()}`}
-                      className="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium"
-                    >
-                      {item}
-                    </Link>
-                  </Fragment>
-                ) : (
-                  <Link
-                    key={item}
-                    to={`/${item.toLowerCase()}`}
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                  >
-                    {item}
-                  </Link>
-                )
-              )}
+              {navigation.map((item) => (
+                <NavLink
+                  key={item}
+                  to={`/${item.toLowerCase()}`}
+                  activeClassName="bg-gray-900 text-white"
+                  className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                >
+                  {item}
+                </NavLink>
+              ))}
             </div>
             <div className="pt-4 pb-3 border-t border-gray-700">
               <div className="flex items-center px-5">
@@ -103,12 +81,8 @@ export default function Nav({ navigation, profile }) {
                   />
                 </div>
                 <div className="ml-3">
-                  <div className="text-base font-medium leading-none text-white">
-                    Tom Cook
-                  </div>
-                  <div className="text-sm font-medium leading-none text-gray-400">
-                    tom@example.com
-                  </div>
+                  <div className="text-base font-medium leading-none text-white">Tom Cook</div>
+                  <div className="text-sm font-medium leading-none text-gray-400">tom@example.com</div>
                 </div>
                 <button className="ml-auto bg-gray-800 flex-shrink-0 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                   <span className="sr-only">View notifications</span>
@@ -117,13 +91,13 @@ export default function Nav({ navigation, profile }) {
               </div>
               <div className="mt-3 px-2 space-y-1">
                 {profile.map((item) => (
-                  <Link
-                    key={item}
-                    to={`/${item.toLowerCase()}`}
+                  <NavLink
+                    key={item.path}
+                    to={item.path}
                     className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700"
                   >
-                    {item}
-                  </Link>
+                    {item.name}
+                  </NavLink>
                 ))}
               </div>
             </div>
@@ -131,5 +105,5 @@ export default function Nav({ navigation, profile }) {
         </>
       )}
     </Disclosure>
-  );
+  )
 }

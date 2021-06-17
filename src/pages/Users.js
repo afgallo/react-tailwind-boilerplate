@@ -1,3 +1,5 @@
+import UserTable from '../components/UserTable'
+
 export default function Users() {
-  return <div>Hello, this is users!</div>
+  return <UserTable />
 }

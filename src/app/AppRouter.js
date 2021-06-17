@@ -1,11 +1,11 @@
 import { lazy, Suspense } from 'react'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
-const MainPage = lazy(() => import('./pages/Main'))
-const LoginPage = lazy(() => import('./pages/Login'))
-const SignupPage = lazy(() => import('./pages/Login'))
-const ForgotPasswordPage = lazy(() => import('./pages/ForgotPassword'))
-const CreatePasswordPage = lazy(() => import('./pages/CreatePassword'))
+const MainPage = lazy(() => import('../pages/Main'))
+const LoginPage = lazy(() => import('../pages/Login'))
+const SignupPage = lazy(() => import('../pages/Login'))
+const ForgotPasswordPage = lazy(() => import('../pages/ForgotPassword'))
+const CreatePasswordPage = lazy(() => import('../pages/CreatePassword'))
 
 export default function AppOuterRouter({ navigation, profile, isAuthenticated }) {
   return (

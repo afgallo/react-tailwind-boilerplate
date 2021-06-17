@@ -13,6 +13,7 @@
     "@craco/craco": "6.1.2",
     "@headlessui/react": "1.2.0",
     "@heroicons/react": "1.0.1",
+    "@tailwindcss/forms": "0.3.3",
     "@testing-library/jest-dom": "5.14.1",
     "@testing-library/react": "11.2.7",
     "@testing-library/user-event": "12.8.3",
@@ -25,20 +26,35 @@
   },
   "devDependencies": {
     "autoprefixer": "9.8.6",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-plugin-prettier": "3.4.0",
     "postcss": "7.0.36",
+    "prettier": "2.3.1",
+    "prettier-eslint": "12.0.0",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@2.1.4"
   },
   "eslintConfig": {
+    "plugins": [
+      "prettier"
+    ],
     "extends": [
       "react-app",
-      "react-app/jest"
+      "react-app/jest",
+      "plugin:prettier/recommended"
     ],
     "rules": {
       "quotes": [
         "error",
         "single"
-      ]
+      ],
+      "semi": 0
     }
+  },
+  "prettier": {
+    "singleQuote": true,
+    "semi": false,
+    "tabWidth": 2,
+    "printWidth": 120
   },
   "browserslist": {
     "production": [

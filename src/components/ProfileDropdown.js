@@ -1,8 +1,9 @@
-import { Fragment } from 'react';
-import { Menu, Transition } from '@headlessui/react';
+import { Fragment } from 'react'
+import { Link } from 'react-router-dom'
+import { Menu, Transition } from '@headlessui/react'
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(' ');
+  return classes.filter(Boolean).join(' ')
 }
 
 export default function ProfileDropdown({ profile }) {
@@ -35,17 +36,14 @@ export default function ProfileDropdown({ profile }) {
               className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
             >
               {profile.map((item) => (
-                <Menu.Item key={item}>
+                <Menu.Item key={item.path}>
                   {({ active }) => (
-                    <a
-                      href="/"
-                      className={classNames(
-                        active ? 'bg-gray-100' : '',
-                        'block px-4 py-2 text-sm text-gray-700'
-                      )}
+                    <Link
+                      to={item.path}
+                      className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                     >
-                      {item}
-                    </a>
+                      {item.name}
+                    </Link>
                   )}
                 </Menu.Item>
               ))}
@@ -54,5 +52,5 @@ export default function ProfileDropdown({ profile }) {
         </>
       )}
     </Menu>
-  );
+  )
 }
