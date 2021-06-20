@@ -1,7 +1,9 @@
 import { atom, useAtom } from 'jotai'
-import AppRouter from './AppRouter'
+// import { useEffect } from 'react'
+import Router from './Router'
 
 export default function App() {
+  const authAtom = atom(true)
   const navigationAtom = atom(['Home', 'Features', 'Users'])
   const profileAtom = atom([
     { name: 'Your Profile', path: '/profile' },
@@ -10,6 +12,15 @@ export default function App() {
   ])
   const [navigation] = useAtom(navigationAtom)
   const [profile] = useAtom(profileAtom)
+  const [isAuthenticated] = useAtom(authAtom)
 
-  return <AppRouter navigation={navigation} profile={profile}></AppRouter>
+  // useEffect(() => {
+  //   const t = setTimeout(() => {
+  //     setIsAuthenticated(false)
+  //   }, 3000)
+
+  //   return () => clearTimeout(t)
+  // }, [setIsAuthenticated])
+
+  return <Router navigation={navigation} profile={profile} isAuthenticated={isAuthenticated} />
 }
